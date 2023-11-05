@@ -1,5 +1,9 @@
 # react-pip (Picture in Picture)
 
+Demos: 
+- Example: https://5g52r4-5173.csb.app/
+- Live Caption Overlay: https://xyyyj4.csb.app/
+
 ## Usage
 
 ```tsx
