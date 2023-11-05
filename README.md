@@ -1,4 +1,4 @@
-# react-pip
+# react-pip (Picture in Picture)
 
 ## Usage
 

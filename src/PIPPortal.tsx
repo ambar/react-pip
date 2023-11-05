@@ -1,6 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {createPortal} from 'react-dom'
 
+declare global {
+  interface Window {
+    documentPictureInPicture?: {
+      requestWindow: (options?: {
+        width?: number
+        height?: number
+      }) => Promise<Window>
+    }
+  }
+}
+
 export const canUsePip =
   typeof window !== 'undefined' &&
   !!window.documentPictureInPicture?.requestWindow
@@ -34,7 +45,7 @@ export const PIPPortal: React.FC<PIPPortalProps> = ({
 
   const setup = async () => {
     const pipWindow: Window =
-      await window.documentPictureInPicture.requestWindow({width, height})
+      await window.documentPictureInPicture!.requestWindow({width, height})
     setContainer(pipWindow.document.body)
     copyStyles(pipWindow)
     pipWindow.addEventListener('pagehide', () => {
@@ -61,7 +72,7 @@ export const PIPPortal: React.FC<PIPPortalProps> = ({
     })
     return () => {
       ac.abort('aborted')
-      setupP.then((x) => x?.())
+      setupP.then((x) => x && x?.())
     }
   }, [])
 
@@ -82,8 +93,9 @@ const copyStyles = (pipWindow: Window) => {
       const link = document.createElement('link')
       link.rel = 'stylesheet'
       link.type = styleSheet.type
+      // @ts-expect-error error TS2322: Type 'MediaList' is not assignable to type 'string'.
       link.media = styleSheet.media
-      link.href = styleSheet.href
+      link.href = styleSheet.href!
       pipWindow.document.head.appendChild(link)
     }
   })
