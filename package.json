@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "start": "vite",
+    "start": "SSL_DEV=yes vite",
     "dev": "vite",
     "build:demo": "vite build",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --moduleResolution Node --outDir build/cjs",
