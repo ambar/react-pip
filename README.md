@@ -1,6 +1,9 @@
 # react-pip (Picture in Picture)
 
-Demos: 
+Use [Document Picture-in-Picture](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow) API to create an always-on-top window.
+
+Demos:
+
 - Example: https://5g52r4-5173.csb.app/
 - Live Caption Overlay: https://xyyyj4.csb.app/
 

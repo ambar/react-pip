@@ -32,14 +32,26 @@ export type PIPPortalProps = {
   width?: number
   height?: number
   children: React.ReactNode
+  /**
+   * Called when the PIP window is closed.
+   */
   onClose?: () => void
+  /**
+   * Whether to copy stylesheets from the main window to the PIP window.
+   * @default true
+   */
+  shouldCopyStyles?: boolean
 }
 
+/**
+ * A React component that renders its children in a Picture-in-Picture window.
+ */
 export const PIPPortal: React.FC<PIPPortalProps> = ({
   children,
   onClose,
   width,
   height,
+  shouldCopyStyles = true,
 }) => {
   const [container, setContainer] = useState<HTMLElement | null>(null)
 
@@ -47,7 +59,9 @@ export const PIPPortal: React.FC<PIPPortalProps> = ({
     const pipWindow: Window =
       await window.documentPictureInPicture!.requestWindow({width, height})
     setContainer(pipWindow.document.body)
-    copyStyles(pipWindow)
+    if (shouldCopyStyles) {
+      copyStyles(pipWindow)
+    }
     pipWindow.addEventListener('pagehide', () => {
       onClose?.()
     })
