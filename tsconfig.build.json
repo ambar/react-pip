@@ -6,6 +6,7 @@
     "outDir": "build",
     "declaration": true,
     "jsx": "react-jsx",
+    "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true

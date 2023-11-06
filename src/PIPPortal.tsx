@@ -52,7 +52,6 @@ export const PIPPortal: React.FC<PIPPortalProps> = ({
       onClose?.()
     })
     return () => {
-      // HMR conflict
       pipWindow.close()
     }
   }
@@ -72,7 +71,7 @@ export const PIPPortal: React.FC<PIPPortalProps> = ({
     })
     return () => {
       ac.abort('aborted')
-      setupP.then((x) => x && x?.())
+      setupP.then((x) => x?.())
     }
   }, [])
 
