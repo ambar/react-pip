@@ -36,6 +36,7 @@ function Demo() {
 export type PIPPortalProps = {
   width?: number
   height?: number
+  disallowReturnToOpener?: boolean
   children: React.ReactNode
   onClose?: () => void
 }
