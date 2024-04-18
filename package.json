@@ -9,25 +9,22 @@
     "pip"
   ],
   "files": [
-    "build"
+    "dist"
   ],
-  "main": "./build/cjs/index.js",
-  "module": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "./package.json": "./package.json",
     ".": {
-      "import": "./build/index.js",
-      "require": "./build/cjs/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {
-    "start": "SSL_DEV=yes vite",
+    "start": "SSL_DEV=yes vite example",
     "dev": "vite",
-    "build:demo": "vite build",
-    "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --moduleResolution Node --outDir build/cjs",
-    "build:esm": "tsc -p tsconfig.build.json",
-    "build": "rm -rf build && npm run build:cjs && npm run build:esm",
+    "build:demo": "vite build example",
+    "build": "rm -rf build && pkgroll",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -40,15 +37,16 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-basic-ssl": "^1.0.1",
-    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "pkgroll": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.9"
   },
   "packageManager": "pnpm@8.10.2+sha1.e0b68270e89c817ff88b7be62466a2128c53af02"
 }

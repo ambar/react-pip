@@ -5,7 +5,9 @@ Use [Document Picture-in-Picture](https://developer.mozilla.org/en-US/docs/Web/A
 Demos:
 
 - Example: https://5g52r4-5173.csb.app/
+  ![screenshot-1.png](./screenshot-1.png)
 - Live Caption Overlay: https://xyyyj4.csb.app/
+  ![screenshot-2.png](./screenshot-2.png)
 
 ## Usage
 

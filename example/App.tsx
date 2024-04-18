@@ -27,7 +27,12 @@ function App() {
       </div>
 
       {isOpen && (
-        <PIPPortal width={450} height={235} onClose={() => setIsOpen(false)}>
+        <PIPPortal
+          width={450}
+          height={235}
+          // disallowReturnToOpener
+          onClose={() => setIsOpen(false)}
+        >
           <div>
             <div>
               <a href="https://react.dev" target="_blank">

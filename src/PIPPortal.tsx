@@ -7,6 +7,7 @@ declare global {
       requestWindow: (options?: {
         width?: number
         height?: number
+        disallowReturnToOpener?: boolean
       }) => Promise<Window>
     }
   }
@@ -31,6 +32,7 @@ const abortable = <T,>(
 export type PIPPortalProps = {
   width?: number
   height?: number
+  disallowReturnToOpener?: boolean
   children: React.ReactNode
   /**
    * Called when the PIP window is closed.
@@ -49,15 +51,14 @@ export type PIPPortalProps = {
 export const PIPPortal: React.FC<PIPPortalProps> = ({
   children,
   onClose,
-  width,
-  height,
   shouldCopyStyles = true,
+  ...requestWindowOptions
 }) => {
   const [container, setContainer] = useState<HTMLElement | null>(null)
 
   const setup = async () => {
     const pipWindow: Window =
-      await window.documentPictureInPicture!.requestWindow({width, height})
+      await window.documentPictureInPicture!.requestWindow(requestWindowOptions)
     setContainer(pipWindow.document.body)
     if (shouldCopyStyles) {
       copyStyles(pipWindow)
